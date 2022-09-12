@@ -1,6 +1,6 @@
 <template>
   <div @upMap="changeMap" class="flex flex-row flex-wrap w-56 place-content-center m-2">
-    <img :src="img">
+    <img loading="lazy" :src="img">
     <AppButton :command="command" @send-command="changeMap" :button-name="buttonName" />
   </div>
 </template>
