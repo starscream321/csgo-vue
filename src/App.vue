@@ -1,26 +1,56 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="bg-gray-800 font-sans font-semibold flex flex-col items-center">
+  <div>{{ state.currentMap }}</div>
+  <AppHeader />
+  <ServerControl/>
+  <MapList :map-data="state.mapData"/>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import mapData from './map.json'
+import {takeServer, Servers} from './serverConnect'
+import {onMounted, reactive} from "vue";
+import MapList from "@/components/MapList";
+import ServerControl from "@/components/ServerControl";
+import AppHeader from "@/components/AppHeader";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {AppHeader, ServerControl, MapList},
+  setup() {
+    const state = reactive({
+      mapFilter: false,
+      apiKey: '',
+      error: false,
+      ip: '',
+      serverTitle: '',
+      freeServers: 0,
+      password: '123123',
+      commandCmd: 'console',
+      mapData: mapData,
+    })
+
+
+    setInterval(() => Servers(), 5000)
+
+    onMounted(async () => {
+      state.freeServers = await Servers()
+    })
+
+
+    takeServer()
+
+
+    return {
+      state
+    }
   }
+
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
