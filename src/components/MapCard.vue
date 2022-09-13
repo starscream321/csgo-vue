@@ -1,7 +1,7 @@
 <template>
   <div @upMap="changeMap" class="flex flex-row flex-wrap w-56 place-content-center m-2">
     <img loading="lazy" :src="img">
-    <AppButton :command="command" @send-command="changeMap" :button-name="buttonName" />
+    <AppButton :command="command" @click="changeMap" :button-name="buttonName" />
   </div>
 </template>
 
@@ -20,8 +20,8 @@ export default {
     const buttonName = 'START'
 
 
-    const changeMap = (n) => {
-      emit('changeMap', n)
+    const changeMap = () => {
+      emit('changeMap', props.command)
     }
 
 
