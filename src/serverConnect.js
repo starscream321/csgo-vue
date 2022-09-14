@@ -40,7 +40,6 @@ export const takeServer = async (pass, errors) => {
     pass.value = ''
 }
 
-takeServer('123123')
 
 
 export const ServerControl = async (value, cmd) => {

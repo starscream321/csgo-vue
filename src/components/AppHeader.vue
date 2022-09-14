@@ -2,7 +2,7 @@
   <div class="relative w-full h-24">
     <img class="p-5 w-64 animate-pulse absolute left-0 top-0 z-10 " :src="'https://uni.invasion.ru/images/logo.svg'">
   </div>
-  <div class="flex justify-center items-center">
+  <div class="flex flex-col justify-center items-center ">
     <AppButton @click="handlePass" :command="`sv_password${pass}`" :button-name="'TAKE PASSWORD'"/>
     <p class="text-white font-bold">PASSWORD: {{pass}}</p>
   </div>
@@ -14,6 +14,7 @@
 
 import AppButton from "@/components/AppButton";
 import {ref} from "vue";
+import {ServerControl} from "@/serverConnect";
 export default {
   name: "AppHeader",
   components: {AppButton},
@@ -28,6 +29,7 @@ export default {
       let password = Math.round((Math.random() * (9000 - 1000) + 1000))
       localStorage.setItem('pass', password)
       pass.value = password
+      ServerControl(password, 'console')
     }
 
     setInterval(() => {
