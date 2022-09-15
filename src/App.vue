@@ -20,14 +20,11 @@ export default {
   components: {AppHeader, ServerControl, MapList},
   setup() {
     const state = reactive({
-      mapFilter: false,
-      apiKey: '',
       error: false,
       ip: '',
       serverTitle: '',
       freeServers: 0,
-      password: '123123',
-      commandCmd: 'console',
+      password: '',
       mapData: mapData,
     })
 

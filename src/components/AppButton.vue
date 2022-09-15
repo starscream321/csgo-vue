@@ -1,6 +1,6 @@
 <template>
   <button
-      class="bg-blue-500 rounded-full p-2 w-44 shadow-md shadow-blue-500/50 m-3 hover:bg-blue-500/70 active:scale-90 text-white">
+      class="button">
     {{buttonName}}
   </button>
 </template>
@@ -10,10 +10,6 @@ export default {
   name: "AppButton",
   props: {
     buttonName: String
-  },
-  setup() {
-
-
   }
 }
 </script>
