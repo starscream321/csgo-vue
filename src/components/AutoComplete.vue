@@ -6,19 +6,19 @@
           type="text"
           class="mt-5 p-2 pl-5 rounded-l-full shadow-lg shadow-gray-50/25 z-10 focus: outline-0 "
           placeholder="console">
-      <AppButton class="w-24  right-0 top-2  z-0 rounded-r-full rounded-l-none ml-0" button-name="OK" @click="consoleCmd"/>
+      <AppButton class="w-24  right-0 top-2  z-0 rounded-r-full rounded-l-none ml-0" button-name="OK" @click="useConsole"/>
     </div>
     <div
         tabindex="0"
-        class="flex w-fit absolute top-16 right-32 h-10 absolute right-3.5 top-14"
+        class="flex w-fit absolute mt-1 top-16 left-8 h-fit absolute right-3.5 top-14 focus: outline-none"
     >
       <ul
-          class="py-0 flex flex-col items-center h-20 overflow-hidden"
+          class="py-0 flex flex-col items-center h-24 overflow-scroll"
       >
         <li
             v-for="(i, index) in searchResults"
             :key="index"
-            class="px-3 py-2 cursor-pointer bg-white w-48"
+            class="cursor-pointer bg-white w-48 border-black border h-fit p-0 flex pl-2"
             @click="handleChange(i)"
         >
           {{i}}
@@ -31,12 +31,11 @@
 <script>
 import AppButton from "@/components/AppButton";
 import {computed, reactive} from "vue";
-import {ServerControl} from "@/serverConnect";
 
 export default {
   name: "AutoComplete",
   components: {AppButton},
-  setup() {
+  setup(props,{emit}) {
     const mostCommand = [
       'mt_freezetime',
       'mp_friendlyfire',
@@ -60,9 +59,9 @@ export default {
       }
     });
 
-    const consoleCmd = () => {
+    const useConsole = () => {
       if(state.cmd !== ''){
-        ServerControl(state.cmd, 'console')
+        emit('cmdCommand', state.cmd, 'console')
         state.cmd = ''
       }
     }
@@ -77,7 +76,7 @@ export default {
         state,
         searchResults,
         handleChange,
-        consoleCmd
+        useConsole
       }
     }
   }

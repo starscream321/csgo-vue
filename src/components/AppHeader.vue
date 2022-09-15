@@ -1,11 +1,12 @@
 <template>
-  <div class="relative w-full h-24">
-    <img class="p-5 w-64 animate-pulse absolute left-0 top-0 z-10 " :src="'https://uni.invasion.ru/images/logo.svg'">
-  </div>
-  <div class="flex flex-col justify-center items-center ">
-    <AppButton @click="handlePass" :command="`sv_password${pass}`" :button-name="'TAKE PASSWORD'"/>
-    <p class="text-white font-bold">PASSWORD: {{pass}}</p>
-  </div>
+    <div class="relative w-full h-24">
+      <img class="p-5 w-64 animate-pulse absolute left-0 top-0 z-10 " :src="'https://uni.invasion.ru/images/logo.svg'">
+    </div>
+    <div class="flex flex-col justify-center items-center ">
+      <h2 class="text-white uppercase font-extrabold">{{serverName}}</h2>
+      <AppButton @click="handlePass" :command="`sv_password${pass}`" :button-name="'TAKE PASSWORD'"/>
+      <p class="text-white font-bold">PASSWORD: {{pass}}</p>
+    </div>
 </template>
 
 <script>
@@ -18,6 +19,9 @@ import {ServerControl} from "@/serverConnect";
 export default {
   name: "AppHeader",
   components: {AppButton},
+  props: {
+    serverName: String
+  },
   setup(){
     const img = {
       image: './src/image/logoInvasion.svg'

@@ -22,25 +22,25 @@
 import {ServerControl} from "@/serverConnect";
 import MapCard from "@/components/MapCard";
 import {reactive} from "vue";
+import mapData from "../map.json"
 
 export default {
   name: "MapList",
   components: {MapCard},
-  props: {
-    mapData: Array
-  },
-  setup(props) {
+  setup() {
 
     const listState = reactive({
       map: '',
       originMap: [],
       customMap: [],
-      checked: false
+      checked: false,
+      maps: []
     })
+    listState.maps = mapData
 
 
-    listState.originMap = props.mapData.filter(({thisOffMap}) => thisOffMap === true)
-    listState.customMap = props.mapData.filter(({thisOffMap}) => thisOffMap !== true)
+    listState.originMap = listState.maps.filter(({thisOffMap}) => thisOffMap === true)
+    listState.customMap = listState.maps.filter(({thisOffMap}) => thisOffMap !== true)
 
     const handleChangedMap = (n) => {
       listState.map = n

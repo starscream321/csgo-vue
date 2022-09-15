@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="inline-block">
-      <AutoComplete />
+      <AutoComplete @cmd-command="ServerControl" />
     </div>
   </div>
 </template>
@@ -30,14 +30,15 @@ export default {
     }
 
 
-    const consoleCmd = (event) => {
-      ServerControl(event.target.value, 'console')
+    const consoleCmd = (e) => {
+        ServerControl(e.target.value, 'console')
     }
 
 
     return {
       command,
-      consoleCmd
+      consoleCmd,
+      ServerControl
     }
   }
 }

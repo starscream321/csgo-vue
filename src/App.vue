@@ -1,53 +1,26 @@
 <template>
-<div class="bg-gray-800 font-sans font-semibold flex flex-col items-center">
-  <div>{{ state.currentMap }}</div>
-  <AppHeader />
-  <ServerControl/>
-  <MapList :map-data="state.mapData"/>
-</div>
+  <router-view/>
 </template>
 
-<script>
-import mapData from './map.json'
-import {takeServer, Servers} from './serverConnect'
-import {onMounted, reactive} from "vue";
-import MapList from "@/components/MapList";
-import ServerControl from "@/components/ServerControl";
-import AppHeader from "@/components/AppHeader";
-
-export default {
-  name: 'App',
-  components: {AppHeader, ServerControl, MapList},
-  setup() {
-    const state = reactive({
-      error: false,
-      ip: '',
-      serverTitle: '',
-      freeServers: 0,
-      password: '',
-      mapData: mapData,
-    })
-
-
-    setInterval(() => Servers(), 5000)
-
-    onMounted(async () => {
-      state.freeServers = await Servers()
-    })
-
-
-    takeServer()
-
-
-    return {
-      state
-    }
-  }
-
-}
-</script>
-
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
+nav {
+  padding: 30px;
+}
 
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
