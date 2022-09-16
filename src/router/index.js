@@ -5,6 +5,7 @@ import MainPage from "@/page/MainPage";
 const routes = [
     {
         path: '/',
+        name: 'login',
         component: LoginPage
     },
     {

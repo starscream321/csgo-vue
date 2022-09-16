@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center p-20 flex-col flex-wrap w-2/3">
+  <div class="flex items-center justify-center p-20 flex-col flex-wrap w-2/3">
     <div class="flex flex-wrap justify-evenly">
       <div>
         <AppButton @click="consoleCmd" :value="command.restart" :button-name="'RESTART'"/>

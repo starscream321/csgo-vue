@@ -10,7 +10,7 @@
     </div>
     <div
         tabindex="0"
-        class="flex w-fit absolute mt-1 top-16 left-8 h-fit absolute right-3.5 top-14 focus: outline-none"
+        class="flex w-fit absolute mt-1 top-16 left-3 h-fit absolute right-3.5 top-14 focus: outline-none"
     >
       <ul
           class="py-0 flex flex-col items-center h-24 overflow-scroll"
@@ -37,7 +37,7 @@ export default {
   components: {AppButton},
   setup(props,{emit}) {
     const mostCommand = [
-      'mt_freezetime',
+      'mp_freezetime',
       'mp_friendlyfire',
       'bot_add ct',
       'bot_add t',

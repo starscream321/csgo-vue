@@ -7,7 +7,7 @@
       </label>
       <div class="container w-2/3">
         <transition name="slide-fade" mode="out-in">
-          <div class="flex flex-wrap justify-between" v-if="!listState.checked">
+          <div class="flex flex-wrap justify-center" v-if="!listState.checked">
             <MapCard @change-map="handleChangedMap" v-for="(map, idx) in listState.originMap" :img="map.img" :command="map.name" :key="idx"/>
           </div>
           <div class="flex flex-wrap justify-between" v-else-if="listState.checked">
