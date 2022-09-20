@@ -45,7 +45,7 @@ export default {
       let password = Math.round((Math.random() * (9000 - 1000) + 1000))
       localStorage.setItem('pass', password)
       state.pass = password
-      ServerControl(password, 'console')
+      ServerControl(`sv_password ${password}`, 'console')
     }
     state.serverName = localStorage.getItem('name')
 

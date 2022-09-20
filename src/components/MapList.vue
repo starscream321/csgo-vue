@@ -10,7 +10,7 @@
           <div class="flex flex-wrap justify-center" v-if="!listState.checked">
             <MapCard @change-map="handleChangedMap" v-for="(map, idx) in listState.originMap" :img="map.img" :command="map.name" :key="idx"/>
           </div>
-          <div class="flex flex-wrap justify-between" v-else-if="listState.checked">
+          <div class="flex flex-wrap justify-center" v-else-if="listState.checked">
             <MapCard @change-map="handleChangedMap" v-for="(map, idx) in listState.customMap" :img="map.img" :command="map.name" :key="idx"/>
           </div>
         </transition>
