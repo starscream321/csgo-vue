@@ -13,6 +13,11 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
+    titleBarStyle: "hidden",
+    titleBarOverlay: {
+      color: '#1f2937',
+      symbolColor: '#ffffff'
+    },
     width: 1920,
     height: 1080,
     webPreferences: {
@@ -27,7 +32,7 @@ async function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
-    if (!process.env.IS_TEST) win.webContents.openDevTools()
+
   } else {
     createProtocol('app')
     // Load the index.html when not in development

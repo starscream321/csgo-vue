@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const _baseURL = 'http://10.20.0.21:3001'
+const _baseURL = 'http://192.168.11.92:3001'
 
 
 let API_KEY = null

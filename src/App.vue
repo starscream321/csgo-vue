@@ -1,4 +1,5 @@
 <template>
+  <div style="-webkit-app-region: drag" class="p-2 pl-3 text-white">Invasion Server</div>
   <div>
     <router-view></router-view>
   </div>
